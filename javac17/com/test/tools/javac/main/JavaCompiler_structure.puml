@@ -1,0 +1,576 @@
+@startuml
+
+/' diagram meta data start
+config=StructureConfiguration;
+{
+  "projectClassification": {
+    "searchMode": "OpenProject", // OpenProject, AllProjects
+    "includedProjects": "",
+    "pathEndKeywords": "*.impl",
+    "isClientPath": "",
+    "isClientName": "",
+    "isTestPath": "",
+    "isTestName": "",
+    "isMappingPath": "",
+    "isMappingName": "",
+    "isDataAccessPath": "",
+    "isDataAccessName": "",
+    "isDataStructurePath": "",
+    "isDataStructureName": "",
+    "isInterfaceStructuresPath": "",
+    "isInterfaceStructuresName": "",
+    "isEntryPointPath": "",
+    "isEntryPointName": ""
+  },
+  "graphRestriction": {
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "removeByInheritance": "", // inheritance/annotation based filtering is done in a second step
+    "removeByAnnotation": "",
+    "removeByClassPackage": "", // cleanup the graph after inheritance/annotation based filtering is done
+    "removeByClassName": "",
+    "cutMappings": false,
+    "cutEnum": false,
+    "cutTests": false,
+    "cutClient": true,
+    "cutDataAccess": false,
+    "cutInterfaceStructures": false,
+    "cutDataStructures": false,
+    "cutGetterAndSetter": false,
+    "cutConstructors": true
+  },
+  "graphTraversal": {
+    "forwardDepth": 3,
+    "backwardDepth": 3,
+    "classPackageExcludeFilter": "",
+    "classPackageIncludeFilter": "",
+    "classNameExcludeFilter": "",
+    "classNameIncludeFilter": "",
+    "methodNameExcludeFilter": "",
+    "methodNameIncludeFilter": "",
+    "hideMappings": false,
+    "hideDataStructures": false,
+    "hidePrivateMethods": true,
+    "hideInterfaceCalls": true, // indirection: implementation -> interface (is hidden) -> implementation
+    "onlyShowApplicationEntryPoints": false // root node is included
+  },
+  "details": {
+    "aggregation": "GroupByClass", // ByClass, GroupByClass, None
+    "showClassGenericTypes": true,
+    "showMethods": false,
+    "showMethodParameterNames": false,
+    "showMethodParameterTypes": false,
+    "showMethodReturnType": false,
+    "showPackageLevels": 3,
+    "showDetailedClassStructure": false
+  },
+  "rootClass": "com.test.tools.javac.main.JavaCompiler"
+}
+diagram meta data end '/
+
+
+
+digraph g {
+    rankdir="TB"
+    splines=polyline
+    
+
+'nodes 
+subgraph cluster_3556498 { 
+   	label=test
+	labeljust=l
+	fillcolor="#ececec"
+	style=filled
+   
+   subgraph cluster_668386687 { 
+   	label=tools
+	labeljust=l
+	fillcolor="#d8d8d8"
+	style=filled
+   
+   subgraph cluster_766046546 { 
+   	label=javac
+	labeljust=l
+	fillcolor="#c4c4c4"
+	style=filled
+   
+   Analyzer275414398[
+	label="(C)Analyzer"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+Annotate275414398[
+	label="(C)Annotate"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+Attr275414398[
+	label="(C)Attr"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+AttrContext275414398[
+	label="(C)AttrContext"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+Check275414398[
+	label="(C)Check"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+ClassFinder275414108[
+	label="(C)ClassFinder"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+ClassReader1930771374[
+	label="(C)ClassReader"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+ClassWriter1930771374[
+	label="(C)ClassWriter"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+CompilePolicy1352375033[
+	label="(E)CompilePolicy"
+	style=filled
+	shape=rect
+	fillcolor="#DCFBD5"
+];
+
+CompileState529520005[
+	label="(E)CompileState"
+	style=filled
+	shape=rect
+	fillcolor="#DCFBD5"
+];
+
+CompileStates275414398[
+	label="(C)CompileStates"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+Context275955313[
+	label="(C)Context"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+DeferredCompleter496953395[
+	label="(C)DeferredCompleter"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+DeferredCompletionFailureHandler275414108[
+	label="(C)DeferredCompletionFailureHandler"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+DeferredDiagnosticHandler53621287[
+	label="(C)DeferredDiagnosticHandler"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+Enter275414398[
+	label="(C)Enter"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+Env275414398[
+	label="(C)Env"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+Factory782662173[
+	label="(C)Factory"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+Flow275414398[
+	label="(C)Flow"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+Gen1930771374[
+	label="(C)Gen"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+GraphDependencies179666342[
+	label="(C)GraphDependencies"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+HierarchyPhase2115328210[
+	label="(C)HierarchyPhase"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+ImplicitCompleter1972885429[
+	label="(C)ImplicitCompleter"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+ImplicitSourcePolicy1352375033[
+	label="(E)ImplicitSourcePolicy"
+	style=filled
+	shape=rect
+	fillcolor="#DCFBD5"
+];
+
+JCClassDecl1120671608[
+	label="(C)JCClassDecl"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+JNIWriter1930771374[
+	label="(C)JNIWriter"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+JavaCompiler275698728[
+	label="(C)JavaCompiler"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+JavacElements42861926[
+	label="(C)JavacElements"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+JavacProcessingEnvironment78065218[
+	label="(C)JavacProcessingEnvironment"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+JavacTaskImpl1930780213[
+	label="(C)JavacTaskImpl"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+List275955313[
+	label="(C)List"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+Log275955313[
+	label="(C)Log"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+Lower275414398[
+	label="(C)Lower"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+ModuleFinder275414108[
+	label="(C)ModuleFinder"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+Modules275414398[
+	label="(C)Modules"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+MultiTaskListener1930780213[
+	label="(C)MultiTaskListener"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+Name275955313[
+	label="(C)Name"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+Names275955313[
+	label="(C)Names"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+Options275955313[
+	label="(C)Options"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+Pair275955313[
+	label="(C)Pair"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+ParserFactory1255331122[
+	label="(C)ParserFactory"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+Preview275414108[
+	label="(C)Preview"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+ReusableJavaCompiler1735256085[
+	label="(C)ReusableJavaCompiler"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+Source275414108[
+	label="(E)Source"
+	style=filled
+	shape=rect
+	fillcolor="#DCFBD5"
+];
+
+Symbol275414108[
+	label="(C)Symbol"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+Symtab275414108[
+	label="(C)Symtab"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+Todo275414398[
+	label="(C)Todo"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+TransTypes275414398[
+	label="(C)TransTypes"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+TreeMaker275923469[
+	label="(C)TreeMaker"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+TypeEnter275414398[
+	label="(C)TypeEnter"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+Types275414108[
+	label="(C)Types"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+
+UsesProvidesCompleter892654433[
+	label="(C)UsesProvidesCompleter"
+	style=filled
+	shape=rect
+	fillcolor="#FFFFFF"
+];
+} 
+} 
+} 
+
+'edges    
+JavaCompiler275698728 -> Analyzer275414398[label="analyzer
+[0..1]"];
+JavaCompiler275698728 -> Annotate275414398[label="annotate
+[0..1]"];
+JavaCompiler275698728 -> Attr275414398[label="attr
+[0..1]"];
+JavaCompiler275698728 -> AttrContext275414398[label="desugaredEnvs
+[0..*]"];
+JavaCompiler275698728 -> Check275414398[label="chk
+[0..1]"];
+JavaCompiler275698728 -> ClassFinder275414108[label="finder
+[0..1]"];
+JavaCompiler275698728 -> ClassReader1930771374[label="reader
+[0..1]"];
+JavaCompiler275698728 -> ClassWriter1930771374[label="writer
+[0..1]"];
+JavaCompiler275698728 -> CompilePolicy1352375033[label="compilePolicy
+[0..1]"];
+JavaCompiler275698728 -> CompileState529520005[label="shouldStopPolicyIfError
+[0..1]"];
+JavaCompiler275698728 -> CompileState529520005[label="shouldStopPolicyIfNoError
+[0..1]"];
+JavaCompiler275698728 -> CompileStates275414398[label="compileStates
+[0..*]"];
+JavaCompiler275698728 -> Context275955313[label="context
+[0..1]"];
+JavaCompiler275698728 -> DeferredCompleter496953395[arrowhead=none, arrowtail=empty, dir=both];
+JavaCompiler275698728 -> DeferredCompletionFailureHandler275414108[label="dcfh
+[0..1]"];
+JavaCompiler275698728 -> DeferredDiagnosticHandler53621287[label="deferredDiagnosticHandler
+[0..1]"];
+JavaCompiler275698728 -> Enter275414398[label="enter
+[0..1]"];
+JavaCompiler275698728 -> Env275414398[label="desugaredEnvs
+[0..*]"];
+JavaCompiler275698728 -> Factory782662173[label="diagFactory
+[0..1]"];
+JavaCompiler275698728 -> Factory782662173[label="diags
+[0..1]"];
+JavaCompiler275698728 -> Flow275414398[label="flow
+[0..1]"];
+JavaCompiler275698728 -> Gen1930771374[label="gen
+[0..1]"];
+JavaCompiler275698728 -> GraphDependencies179666342[arrowhead=none, arrowtail=empty, dir=both];
+JavaCompiler275698728 -> HierarchyPhase2115328210[arrowhead=none, arrowtail=empty, dir=both];
+JavaCompiler275698728 -> ImplicitCompleter1972885429[arrowhead=none, arrowtail=empty, dir=both];
+JavaCompiler275698728 -> ImplicitSourcePolicy1352375033[label="implicitSourcePolicy
+[0..1]"];
+JavaCompiler275698728 -> JCClassDecl1120671608[label="desugaredEnvs
+[0..*]"];
+JavaCompiler275698728 -> JCClassDecl1120671608[label="rootClasses
+[0..*]"];
+JavaCompiler275698728 -> JNIWriter1930771374[label="jniWriter
+[0..1]"];
+JavaCompiler275698728 -> JavacProcessingEnvironment78065218[label="procEnvImpl
+[0..1]"];
+JavaCompiler275698728 -> List275955313[label="closeables
+[0..*]"];
+JavaCompiler275698728 -> List275955313[label="rootClasses
+[0..*]"];
+JavaCompiler275698728 -> Log275955313[label="log
+[0..1]"];
+JavaCompiler275698728 -> Lower275414398[label="lower
+[0..1]"];
+JavaCompiler275698728 -> ModuleFinder275414108[label="moduleFinder
+[0..1]"];
+JavaCompiler275698728 -> Modules275414398[label="modules
+[0..1]"];
+JavaCompiler275698728 -> MultiTaskListener1930780213[label="taskListener
+[0..1]"];
+JavaCompiler275698728 -> Name275955313[label="completionFailureName
+[0..1]"];
+JavaCompiler275698728 -> Names275955313[label="names
+[0..1]"];
+JavaCompiler275698728 -> Options275955313[label="options
+[0..1]"];
+JavaCompiler275698728 -> Pair275955313[label="desugaredEnvs
+[0..*]"];
+JavaCompiler275698728 -> ParserFactory1255331122[label="parserFactory
+[0..1]"];
+JavaCompiler275698728 -> Preview275414108[label="preview
+[0..1]"];
+JavaCompiler275698728 -> ReusableJavaCompiler1735256085[arrowhead=none, arrowtail=empty, dir=both];
+JavaCompiler275698728 -> Source275414108[label="source
+[0..1]"];
+JavaCompiler275698728 -> Symbol275414108[label="silentFail
+[0..1]"];
+JavaCompiler275698728 -> Symtab275414108[label="syms
+[0..1]"];
+JavaCompiler275698728 -> Todo275414398[label="todo
+[0..*]"];
+JavaCompiler275698728 -> TransTypes275414398[label="transTypes
+[0..1]"];
+JavaCompiler275698728 -> TreeMaker275923469[label="make
+[0..1]"];
+JavaCompiler275698728 -> TypeEnter275414398[arrowhead=none, arrowtail=empty, dir=both];
+JavaCompiler275698728 -> Types275414108[label="types
+[0..1]"];
+JavaCompiler275698728 -> UsesProvidesCompleter892654433[arrowhead=none, arrowtail=empty, dir=both];
+JavacElements42861926 -> JavaCompiler275698728[label="javaCompiler
+[0..1]"];
+JavacProcessingEnvironment78065218 -> JavaCompiler275698728[label="compiler
+[0..1]"];
+JavacTaskImpl1930780213 -> JavaCompiler275698728[label="compiler
+[0..1]"];
+    
+}
+@enduml

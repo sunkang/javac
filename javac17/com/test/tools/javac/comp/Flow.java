@@ -217,9 +217,16 @@ public class Flow {
     }
 
     public void analyzeTree(Env<AttrContext> env, TreeMaker make) {
+        //SUN: 语句是否可达，TreeScanner 访问者模式处理传入的一遍语法树
         new AliveAnalyzer().analyzeTree(env, make);
+
+        //SUN: 变量使用时已经赋值；final 变量没有被多次赋值
         new AssignAnalyzer().analyzeTree(env, make);
+
+        //SUN: checked 异常是否被声明及抛出
         new FlowAnalyzer().analyzeTree(env, make);
+
+        //SUN: lambda 表达式或者内部类引用的局部变量要是 final
         new CaptureAnalyzer().analyzeTree(env, make);
     }
 

@@ -617,6 +617,7 @@ public class JavaCompiler {
             }
             Parser parser = parserFactory.newParser(content, keepComments(), genEndPos,
                                 lineDebugInfo, filename.isNameCompatible("module-info", Kind.SOURCE));
+            //SUN: 抽象语法树
             tree = parser.parseCompilationUnit();
             if (verbose) {
                 log.printVerbose("parsing.done", Long.toString(elapsed(msec)));
@@ -899,6 +900,7 @@ public class JavaCompiler {
         start_msec = now();
 
         try {
+            //SUN: 初始化插入式注解处理器
             initProcessAnnotations(processors, sourceFileObjects, classnames);
 
             for (String className : classnames) {
@@ -912,11 +914,14 @@ public class JavaCompiler {
                 modules.addExtraAddModules(moduleName);
             }
 
+
             // These method calls must be chained to avoid memory leaks
-            processAnnotations(
-                enterTrees(
+            processAnnotations( //SUN: 执行注解处理
+                enterTrees( //SUN: 输入到符号表
                         stopIfError(CompileState.ENTER,
-                                initModules(stopIfError(CompileState.ENTER, parseFiles(sourceFileObjects))))
+                                initModules(stopIfError(CompileState.ENTER,
+                                        parseFiles(sourceFileObjects)))) //SUN: 词法分析、语法分析，生成语法树AST
+                        //其中，语法树每个节点都是一个语法结构(包括 包，类型，修饰符，运算符，接口，返回值，代码注释等)
                 ),
                 classnames
             );
@@ -936,14 +941,25 @@ public class JavaCompiler {
                 case BY_FILE: {
                         Queue<Queue<Env<AttrContext>>> q = todo.groupByFile();
                         while (!q.isEmpty() && !shouldStop(CompileState.ATTR)) {
-                            generate(desugar(flow(attribute(q.remove()))));
+                            generate( //SUN:生成字节码
+                                    desugar(//SUN: 语法糖处理
+                                            flow(//SUN: 数据流分析
+                                                    attribute(q.remove()))));//SUN: 标注
                         }
                     }
                     break;
 
                 case BY_TODO:
                     while (!todo.isEmpty())
-                        generate(desugar(flow(attribute(todo.remove()))));
+                        //SUN:生成字节码
+                        generate(
+                                //SUN: 语法糖处理，常见的语法糖有泛型、变长参数、条件编译、自动拆装箱、内部类等
+                                desugar(
+                                        //SUN:数据流分析，final常量分析，分析赋值语句，移除不可到达的语句，异常是否catch
+                                        flow(
+                                                //SUN: 标注，各种代码静态检查（变量是否已申明，类型是否匹配），还会进行常量折叠
+                                                // 建议设置断点到Log.report测试下错误代码
+                                                attribute(todo.remove()))));
                     break;
 
                 default:

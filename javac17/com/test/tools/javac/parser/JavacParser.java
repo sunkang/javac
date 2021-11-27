@@ -3638,6 +3638,12 @@ public class JavacParser implements Parser {
         boolean consumedToplevelDoc = false;
         boolean seenImport = false;
         boolean seenPackage = false;
+
+        //SUN:
+        // defs 存放这个文件解析出来的顶级对象：
+        //  JCTree$JCPackageDecl // 包申明
+        //  JCTree$JCImport // import，一条一个，所以有多个。
+        //  JCTree$JCClassDecl // 广类申明，可以有多个，但是最多只能有一个是public的。
         ListBuffer<JCTree> defs = new ListBuffer<>();
         if (token.kind == MONKEYS_AT)
             mods = modifiersOpt();
@@ -3697,6 +3703,7 @@ public class JavacParser implements Parser {
                         reportSyntaxError(token.pos, Errors.ExpectedModule);
                     }
                 }
+                //SUN: 解析代码，生成语法树
                 JCTree def = typeDeclaration(mods, docComment);
                 if (def instanceof JCExpressionStatement statement)
                     def = statement.expr;
@@ -3707,6 +3714,7 @@ public class JavacParser implements Parser {
                 firstTypeDecl = false;
             }
         }
+        //SUN: 包装下defs数据成JCCompilationUnit对象就返回
         JCTree.JCCompilationUnit toplevel = F.at(firstToken.pos).TopLevel(defs.toList());
         if (!consumedToplevelDoc)
             attach(toplevel, firstToken.comment(CommentStyle.JAVADOC));
@@ -3853,6 +3861,7 @@ public class JavacParser implements Parser {
             nextToken();
             return toP(F.at(pos).Skip());
         } else {
+            //SUN: 调用递归解析处理函数生成语法树，各类语句的节点见JCTree文件中的语法节点类
             return classOrRecordOrInterfaceOrEnumDeclaration(modifiersOpt(mods), docComment);
         }
     }
